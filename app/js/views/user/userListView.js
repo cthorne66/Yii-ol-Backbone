@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'views/user/item',
-  'views/user/form',
+  'views/user/userFormView',
   'text!templates/user/list.html',
   'app'
   ], function($, _, Backbone, UserItemView, UserFormView, template, App) {

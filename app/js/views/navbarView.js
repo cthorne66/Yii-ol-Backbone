@@ -1,14 +1,10 @@
 define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'collections/user',
-  'views/user/list',
+  'core',
   'app',
   'text!templates/navbar/dropdown.html'
-  ], function($, _, Backbone, UserCollection, UserListView, App, template) {
+  ], function(core, App, template) {
 
-  return Backbone.View.extend({
+  mv.views.NavbarView = Backbone.View.extend({
     template : _.template(template),
     events: {
       "click #logout"   : "logout"
@@ -29,5 +25,5 @@ define([
       this.remove();
     }
   });
-
+  return mv.views.NavbarView;
 });

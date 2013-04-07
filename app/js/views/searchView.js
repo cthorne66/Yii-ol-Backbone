@@ -1,12 +1,10 @@
 define([
-  'jquery',
-  'underscore',
-  'backbone',
+  'core',
   'app',
   'visualsearch'
-  ], function($, _, Backbone, App) {
+  ], function(core, App) {
 
-  return Backbone.View.extend({
+  mv.views.SearchView = Backbone.View.extend({
 
     initialize: function(options) {
       _.bindAll(this, 'render','search','valueMatches','facetMatches');
@@ -59,5 +57,5 @@ define([
       if (!App.posts.length) App.posts.fetch();
     })
   });
-
+  return mv.views.SearchView;
 });

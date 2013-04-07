@@ -1,13 +1,11 @@
 define([
-  'jquery', 
-  'underscore', 
-  'backbone',
+  'core',
   'views/alert',
   'views/modal/confirm',
   'text!templates/comment/item.html'
-  ], function($, _, Backbone, AlertView, ModalConfirmView, itemTemplate) {
+  ], function(core, AlertView, ModalConfirmView, itemTemplate) {
 
-  var CommentItemView = Backbone.View.extend({
+  mv.views.CommentItemView = Backbone.View.extend({
 
     tagName: 'li',
 
@@ -67,5 +65,5 @@ define([
 
   });
 
-  return CommentItemView;
+  return mv.views.CommentItemView;
 });

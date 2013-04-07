@@ -71,7 +71,7 @@ define([
   // Alerts
 
   App.vent.on('alert', function (options) {
-    require(['views/alert'], function(AlertView) {
+    require(['views/alertView'], function(AlertView) {
       var alertView = new AlertView(options);
       App.headRegion.show(alertView);
     });

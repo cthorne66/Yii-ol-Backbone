@@ -1,12 +1,9 @@
 define([
-  'jquery', 
-  'underscore', 
-  'backbone',
-  'text!templates/modal/new-pass.html',
-  'bootstrapModal',
-  ], function($, _, Backbone, modalTemplate) {
+  'core',
+  'text!templates/modal/new-pass.html'
+    ], function(core, modalTemplate) {
 
-  var ModalNewPassView = Backbone.View.extend({
+  mv.views.ModalNewPassView = Backbone.View.extend({
     
     id: "modal",
 
@@ -14,7 +11,7 @@ define([
 
     events: {
       "click .confirm" : "confirmAction",
-      "click .cancel"  : "cancelAction",
+      "click .cancel"  : "cancelAction"
     },
 
     initialize: function(options) {
@@ -47,9 +44,9 @@ define([
     close: function() {
       this.undelegateEvents();
       this.remove();
-    },
+    }
 
   });
 
-  return ModalNewPassView;
+  return mv.views.ModalNewPassView;
 });

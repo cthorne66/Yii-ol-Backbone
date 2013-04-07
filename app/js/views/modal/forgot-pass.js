@@ -1,11 +1,9 @@
 define([
-  'jquery', 
-  'underscore', 
-  'backbone',
-  'text!templates/modal/forgot-pass.html',
-  ], function($, _, Backbone, modalTemplate) {
+  'core',
+  'text!templates/modal/forgot-pass.html'
+  ], function(core, modalTemplate) {
 
-  var ModalInputView = Backbone.View.extend({
+  mv.views.ModalInputView = Backbone.View.extend({
     
     id: "modal",
 
@@ -13,7 +11,7 @@ define([
 
     events: {
       "click .confirm" : "confirm",
-      "click .cancel"  : "cancel",
+      "click .cancel"  : "cancel"
     },
 
     initialize: function(options) {
@@ -48,9 +46,9 @@ define([
     close: function() {
       this.undelegateEvents();
       this.remove();
-    },
+    }
 
   });
 
-  return ModalInputView;
+  return mv.views.ModalInputView;
 });

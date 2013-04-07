@@ -40,7 +40,9 @@ define([
     },
 
     render: function() {
-      this.$el.html(this.template(this.model.toJSON()));
+      var isNew = this.model.isNew();
+      var data = _.extend(this.model.toJSON(),{isNew: isNew});
+      this.$el.html(this.template(data));
       this.modelBinder.bind(this.model, this.el, this.bindings);
       return this;
     },
@@ -50,6 +52,7 @@ define([
       lname: '#lname',
       email: '#email',
       username: '#username',
+      password: 'input:password',
       role: '#role'
     },
 

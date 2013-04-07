@@ -1,15 +1,13 @@
 define([
-  'jquery', 
-  'underscore', 
-  'backbone',
+  'core',
   'models/comment',
   'views/comment/item',
   'views/comment/form',
   'text!templates/comment/list.html',
   'views/alert'
-  ], function($, _, Backbone, CommentModel, CommentItemView, CommentFormView, listTemplate, AlertView) {
+  ], function(core, CommentModel, CommentItemView, CommentFormView, listTemplate, AlertView) {
 
-  var CommentListView = Backbone.View.extend({
+  mv.views.CommentListView = Backbone.View.extend({
 
     listTemplate : _.template(listTemplate),
 
@@ -60,9 +58,9 @@ define([
     close: function() {
       this.undelegateEvents();
       this.remove();
-    },
+    }
 
   });
 
-  return CommentListView;
+  return mv.views.CommentListView;
 });

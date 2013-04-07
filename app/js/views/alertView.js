@@ -1,12 +1,9 @@
 define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'text!templates/alert.html',
-  'bootstrapAlert'
-], function($, _, Backbone, template) {
+  'core',
+  'text!templates/alert.html'
+], function(core, template) {
 
-  return Backbone.View.extend({
+  mv.views.Alert = Backbone.View.extend({
     template: _.template(template),
     events: {
       "click .close" : "close"
@@ -31,4 +28,5 @@ define([
       $('html, body').animate({ scrollTop: 0 }, 'slow');
     }
   });
+  return mv.views.Alert;
 });

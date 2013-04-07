@@ -30,7 +30,7 @@
     <div class="control-group">
       <label class="control-label">Password</label>
       <div class="controls">
-        <input type="password" class="input-large" id="<%= model.isNew() ? 'password' : 'newPassword' %>">
+        <input type="password" class="input-large" id="{{= isNew ? 'password' : 'newPassword' }}">
       </div>
     </div>
     <div class="control-group">

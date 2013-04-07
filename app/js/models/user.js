@@ -16,6 +16,7 @@ define([
       lname: '',
       email: '',
       username: '',
+      password: '',
       create_date: '',
       role: ''
     },

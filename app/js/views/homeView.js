@@ -1,10 +1,8 @@
 define([
-  'jquery', 
-  'underscore', 
-  'backbone',
-  ], function($, _, Backbone) {
+  'core'
+  ], function(core) {
 
-  var HomeView = Backbone.View.extend({
+  mv.views.Home = Backbone.View.extend({
 
     // template: _.template(),
 
@@ -24,9 +22,9 @@ define([
     close: function() {
       this.remove();
       this.undelegateEvents();
-    },
+    }
 
   });
 
-  return HomeView;
+  return mv.views.Home;
 });

@@ -1,15 +1,13 @@
 define([
-  'jquery', 
-  'underscore', 
-  'backbone',
+  'core',
   'modelbinding',
   'collections/post',
   'views/alert',
   'text!templates/comment/form.html'
 //  'bootstrapTypeahead'
-  ], function($, _, Backbone, ModelBinding, PostCollection, AlertView, formTemplate) {
+  ], function(core, ModelBinding, PostCollection, AlertView, formTemplate) {
 
-  var CommentFormView = Backbone.View.extend({
+  mv.views.CommentFormView = Backbone.View.extend({
 
     formTemplate : _.template(formTemplate),
 
@@ -64,7 +62,7 @@ define([
     success: function(model, response) {
       var alertView = new AlertView({
         msg: 'Comment "' + this.model.get('name') + '" updated.',
-        type: 'success',
+        type: 'success'
       });
       $('.head').html(alertView.render().el); 
         
@@ -83,9 +81,9 @@ define([
       this.model.off('error', this.error);
       this.undelegateEvents();
       this.remove();
-    },
+    }
 
   });
 
-  return CommentFormView;
+  return mv.views.CommentFormView;
 });

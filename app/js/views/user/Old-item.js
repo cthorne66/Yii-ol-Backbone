@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'modelbinding',
-  'views/user/form',
+  'views/user/userFormView',
   'text!templates/user/item.html',
   'app',
   'views/modal/confirm'

@@ -80,6 +80,14 @@ Run the migrations:
     $ php yiic.php migrate
 
 
+Webserver configurations
+    in your httpd.conf:
+
+      uncomment line: LoadModule rewrite_module modules/mod_rewrite.so
+
+    if your project isn't at the root of your webserver, you may have to enable virutal hosts.  Uncomment this line:
+        Include conf/extra/httpd-vhosts.conf
+
 Optional - if you chose to enable the Gii code generation tool, then you can use this url and password
 
     URL:      http://hostname/path-to-yiibackbone/gii (for example: http://localhost/YiiBackbone/gii)

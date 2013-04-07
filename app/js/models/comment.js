@@ -1,15 +1,13 @@
 define([
-  'jquery', 
-  'underscore', 
-  'backbone',
-  'backboneRelational',
-  ], function($, _, Backbone) {
+  'core',
+  'backboneRelational'
+  ], function() {
 
-  var CommentModel = Backbone.RelationalModel.extend({
+  mv.models.Comment = Backbone.RelationalModel.extend({
     
-    urlRoot: 'api/comment',
+    urlRoot: 'api/comment'
 
   });
 
-  return CommentModel;
+  return mv.models.Comment;
 });

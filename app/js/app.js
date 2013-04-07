@@ -1,9 +1,6 @@
 define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'marionette'
-], function($, _, Backbone, Marionette) {
+  'core'
+], function(core) {
 
   var App = new Backbone.Marionette.Application;
   App.addRegions({

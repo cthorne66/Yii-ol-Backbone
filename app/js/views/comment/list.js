@@ -6,7 +6,7 @@ define([
   'views/comment/item',
   'views/comment/form',
   'text!templates/comment/list.html',
-  'views/alert',
+  'views/alert'
   ], function($, _, Backbone, CommentModel, CommentItemView, CommentFormView, listTemplate, AlertView) {
 
   var CommentListView = Backbone.View.extend({
@@ -14,7 +14,7 @@ define([
     listTemplate : _.template(listTemplate),
 
     events: {
-      'click .new' : 'new',
+      'click .new' : 'new'
     },
 
     initialize: function(options) {
@@ -46,7 +46,7 @@ define([
 
       var formView = new CommentFormView({
         model : new PublicationModel, 
-        vent  : this.vent,
+        vent  : this.vent
       });
                     
       Backbone.history.navigate('comment/new');

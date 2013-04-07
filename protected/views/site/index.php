@@ -1,5 +1,5 @@
 <script src="/app/js/config.js"></script>
-<script data-main="app/js/main" src="/app/js/libs/require/require.js"></script>
+<script data-main="app/js/main" src="/app/lib/require/require.js"></script>
 <script type="text/javascript">
     define('onLoad', ['app'], function(App) {
     <?php if (Yii::app()->user->isGuest): ?>

@@ -1,17 +1,24 @@
 define([
-  'jquery', 
-  'underscore', 
-  'backbone',
+  'core',
   'models/post',
   'models/comment',
-  'collections/post',
-  'collections/comment',
-  'backboneRelational',
-  ], function($, _, Backbone, PostModel, CommentModel, PostCollection, CommentCollection) {
+  'collections/posts',
+  'collections/comments',
+  'backboneRelational'
+  ], function(core, PostModel, CommentModel, PostCollection, CommentCollection) {
 
-  var UserModel = Backbone.RelationalModel.extend({
+  mv.models.User = Backbone.RelationalModel.extend({
 
     urlRoot: 'api/user',
+
+    defaults: {
+      fname: '',
+      lname: '',
+      email: '',
+      username: '',
+      create_date: '',
+      role: ''
+    },
 
     relations: [
       {
@@ -22,7 +29,7 @@ define([
         reverseRelation: {
           key: 'author',
           keySource: 'user_id',
-          includeInJSON: Backbone.Model.prototype.idAttribute,
+          includeInJSON: Backbone.Model.prototype.idAttribute
         }
       },
       {
@@ -33,14 +40,10 @@ define([
         reverseRelation: {
           key: 'author',
           keySource: 'user_id',
-          includeInJSON: Backbone.Model.prototype.idAttribute,
+          includeInJSON: Backbone.Model.prototype.idAttribute
         }
-      },
-    ],
-
-
-
+      }
+    ]
   });
-
-  return UserModel;
+  return mv.models.User;
 });

@@ -4,7 +4,7 @@ define([
   'backbone',
   'views/alert',
   'views/modal/confirm',
-  'text!templates/comment/item.html',
+  'text!templates/comment/item.html'
   ], function($, _, Backbone, AlertView, ModalConfirmView, itemTemplate) {
 
   var CommentItemView = Backbone.View.extend({
@@ -15,7 +15,7 @@ define([
 
     events: {
       'click a.edit'   : 'edit',
-      'click a.delete' : 'delete',
+      'click a.delete' : 'delete'
     },
     
     initialize: function(options) {
@@ -63,7 +63,7 @@ define([
       this.model.off('modal:confirm', this.confirmDelete);
       this.undelegateEvents();
       this.remove();
-    },
+    }
 
   });
 

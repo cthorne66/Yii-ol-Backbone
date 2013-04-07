@@ -1,15 +1,21 @@
 define([
-  'jquery',
-  'underscore',
-  'backbone',
+  'core',
   'models/comment',
-  'collections/comment',
+  'collections/comments',
   'backboneRelational'
-  ], function($, _, Backbone, CommentModel, CommentCollection) {
+  ], function(core, CommentModel, CommentCollection) {
 
-  return Backbone.RelationalModel.extend({
+  mv.models.Post = Backbone.RelationalModel.extend({
 
     urlRoot: 'api/post',
+
+    defaults: {
+      title: '',
+      content: '',
+      create_date: '',
+      is_deleted: null,
+      user_id: ''
+    },
 
     relations: [
       {
@@ -29,7 +35,7 @@ define([
       if('comments' == key && !this.get('comments').length) {
         var self = this;
         return [$.ajax({
-          url: 'post/comments/id/' + this.id,
+          url: 'post/comments/id/' + self.get('id'),
           success: function(data) {
             self.get('comments').reset(data);
           }
@@ -39,4 +45,5 @@ define([
     }
 
   });
+  return mv.models.Post;
 });

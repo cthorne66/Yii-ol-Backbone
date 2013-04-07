@@ -1,13 +1,11 @@
 define([
-  'jquery',
-  'underscore',
-  'backbone',
+  'core',
   'app',
   'models/webUser',
   'text!templates/navbar/login.html'
-], function($, _, Backbone, App, WebUser, template) {
+], function(core, App, WebUser, template) {
 
-  return Backbone.View.extend({
+  mv.views.LoginView = Backbone.View.extend({
     template : _.template(template),
     events: {
       'submit form': 'submitForm'
@@ -47,4 +45,5 @@ define([
       this.remove();
     }
   });
+  return mv.views.LoginView;
 });

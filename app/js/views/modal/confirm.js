@@ -1,11 +1,9 @@
 define([
-  'jquery', 
-  'underscore', 
-  'backbone',
-  'text!templates/modal/confirm.html',
-  ], function($, _, Backbone, modalTemplate) {
+  'core',
+  'text!templates/modal/confirm.html'
+  ], function(core, modalTemplate) {
 
-  var ModalConfirmView = Backbone.View.extend({
+  mv.views.ModalConfirmView = Backbone.View.extend({
     
     id: "modal",
 
@@ -13,7 +11,7 @@ define([
 
     events: {
       "click .confirm" : "confirm",
-      "click .cancel"  : "cancel",
+      "click .cancel"  : "cancel"
     },
 
     initialize: function(options) {
@@ -49,9 +47,9 @@ define([
     close: function() {
       this.undelegateEvents();
       this.remove();
-    },
+    }
 
   });
 
-  return ModalConfirmView;
+  return mv.views.ModalConfirmView;
 });

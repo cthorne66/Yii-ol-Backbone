@@ -3,8 +3,8 @@ define([
   'underscore',
   'backbone',
   'views/user/item',
-  'views/user/form',
-  'text!templates/user/list.html',
+  'views/user/userFormView',
+  'text!templates/user/tplUserList.html',
   'app'
   ], function($, _, Backbone, UserItemView, UserFormView, template, App) {
 

@@ -1,9 +1,7 @@
 define([
-  'jquery',
-  'underscore',
-  'backbone',
+  'core',
   'app'
-  ], function($, _, Backbone, App) {
+  ], function(core, App) {
 
   return Backbone.Router.extend({
 
@@ -21,84 +19,75 @@ define([
 
     // Users
     userList: function() {
-      $.when(
-        App.users.length || App.users.fetch()
-      ).done(function() {
-        require(['views/user/list'], function(UserList) {
-          App.mainRegion.show(new UserList({
-            collection: App.users
-          }));
-        });
+      require(['views/user/userListView'], function(UserListView) {
+        var view = new UserListView();
+        $.when(view.setup())
+          .done(function() {
+            App.mainRegion.show(view.render());
+          });
       });
     },
 
     userNew: function() {
-      require(['views/user/form'], function(UserForm) {
-        App.mainRegion.show(new UserForm({
-          model: new App.users.model
-        }));
+      require(['views/user/userFormView'], function(UserFormView) {
+        var view = mv.i.views.userFormView = new UserFormView();
+        $.when(view.setup())
+          .done(function() {
+            App.mainRegion.show(view.render());
+          });
       });
     },
 
     // Todo: do something if model wasn't found
     userEdit: function(id) {
-      $.when(
-        App.users.length || App.users.fetch()
-      ).done(function () {
-        require(['views/user/form'], function(Form) {
-          var model = App.users.get(id);
-          App.mainRegion.show(new Form({
-            model: model
-          }));
-        });
+      require(['views/user/userFormView'], function(UserFormView) {
+        var view = mv.i.views.userFormView = new UserFormView();
+        $.when(view.setup(id))
+          .done(function() {
+            App.mainRegion.show(view.render());
+          });
       });
     },
 
     // Posts:
     postList: function() {
-      $.when(
-        App.posts.length || App.posts.fetch()
-      ).done(function() {
-        require(['views/post/list'], function(PostList) {
-          App.mainRegion.show(new PostList({
-            collection : App.posts
-          }));
-        })
+      require(['views/post/postListView'], function(PostListView) {
+        var view = new PostListView();
+        $.when(view.setup())
+        .done(function() {
+          App.mainRegion.show(view.render());
+        });
       });
     },
 
     postNew: function() {
-      require(['views/post/form'], function(PostForm) {
-        App.mainRegion.show(new PostForm({
-          model: new App.posts.model
-        }));
+      require(['views/post/postFormView'], function(PostForm) {
+        var view = mv.i.views.postFormView = new PostForm();
+        $.when(view.setup())
+        .done(function() {
+          App.mainRegion.show(view.render());
+        });
       });
     },
 
     // Todo: do something if model wasn't found
     postEdit: function(id) {
-      $.when(
-        App.posts.length || App.posts.fetch()
-      ).done(function () {
-        require(['views/post/form'], function(Form) {
-          var model = App.posts.get(id);
-          App.mainRegion.show(new Form({
-            model: model
-          }));
+      require(['views/post/postFormView'], function(PostForm) {
+        var view = mv.i.views.postFormView = new PostForm();
+        $.when(view.setup(id))
+        .done(function() {
+            App.mainRegion.show(view.render());
         });
       });
     },
 
     // Todo: do something if model wasn't found
     postRead: function(id) {
-      $.when(
-        App.posts.length || App.posts.fetch()
-      ).done(function () {
-        require(['views/post/item'], function(Item) {
-          var model = App.posts.get(id);
-          App.mainRegion.show(new Item({
-            model: model
-          }));
+      require(['views/post/postItemView'], function(PostItemView) {
+        var view = new PostItemView();
+        $.when(view.setup(id))
+        .done(function() {
+          App.mainRegion.show(view.render());
         });
       });
     }

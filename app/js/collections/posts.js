@@ -1,12 +1,10 @@
 define([
-  'jquery',
-  'underscore',
-  'backbone',
+  'core',
   'models/post',
   'datejs'
-  ], function($, _, Backbone, PostModel){
+  ], function(core, PostModel){
 
-  return Backbone.Collection.extend({
+  mv.collections.Posts = Backbone.Collection.extend({
     model: PostModel,
     url: 'api/post',
 
@@ -14,4 +12,5 @@ define([
       return Date.parse(a.get('create_date')) < Date.parse(b.get('create_date'));
     }
   });
+  return mv.collections.Posts;
 });

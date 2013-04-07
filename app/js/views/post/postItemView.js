@@ -1,15 +1,13 @@
 define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'modelbinding',
+  'core',
   'app',
+  'models/post',
   'views/modal/confirm',
-  'text!templates/post/item.html',
+  'text!templates/post/tplPostItem.html',
   'jqueryUIDatepicker'
-  ], function($, _, Backbone, ModelBinding, App, ModalConfirmView, template) {
+  ], function(core, App, Post, ModalConfirmView, template) {
 
-  return Backbone.View.extend({
+  mv.views.PostItemView = Backbone.View.extend({
     template : _.template(template),
     events: {
       'click a.delete' : 'delete',
@@ -20,11 +18,30 @@ define([
     initialize: function(options) {
       _.bindAll(this, 'render','confirmDelete', 'close');
 
-      this.model.on('error', this.error);
-      this.model.on('modal:confirm', this.confirmDelete);
+      // this.model.on('error', this.error);
+      // this.model.on('modal:confirm', this.confirmDelete);
 
-      $.when(this.model.fetchRelated('comments'))
-       .done(this.render);
+      // $.when(this.model.fetchRelated('comments'))
+      //  .done(this.render);
+    },
+
+    setup: function(id){
+      var self = this,
+        dfd = $.Deferred(),
+        post = new Post({id:id});
+
+      $.when(post.fetch())
+      .done(function(){
+        self.model = post;
+        self.model.fetchRelated('comments');
+        self.model.on('error', self.error);
+        self.model.on('modal:confirm', self.confirmDelete);
+        dfd.resolve();
+      })
+      .fail(function(err){
+        dfd.reject();
+      });
+      return dfd.promise();
     },
 
     render: function(template) {
@@ -39,13 +56,13 @@ define([
       return this;
     },
 
-    read: function(e){
-      e.preventDefault();
+    read: function(event){
+      event.preventDefault();
       Backbone.history.navigate('post/read/' + this.model.id, true);
     },
 
-    edit: function(e){
-      e.preventDefault();
+    edit: function(event){
+      event.preventDefault();
       Backbone.history.navigate('post/edit/' + this.model.id, true);
     },
 
@@ -78,4 +95,5 @@ define([
       this.remove();
     }
   });
+  return mv.views.PostItemView;
 });

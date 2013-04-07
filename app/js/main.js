@@ -2,28 +2,22 @@
 define.amd.jQuery = true;
 
 define([
-  'jquery',
-  'underscore',
-  'backbone',
+  'core',
   'domReady',
   'router',
   'app',
   'models/login',
   'models/webUser',
-  'collections/user',
-  'collections/post',
-  'collections/comment',
-  'views/navbar',
-  'views/search',
-  'views/login',
-  'bootstrapDropdown',
-  'bootstrapModal',
+  'collections/comments',
+  'views/navbarView',
+  'views/searchView',
+  'views/loginView',
   'backboneRelational',
   'datejs'
-], function($, _, Backbone, domReady,
+], function(core, domReady,
             Router, App,
             LoginModel, WebUser,
-            UserCollection, PostCollection, CommentCollection,
+            CommentCollection,
             NavbarView, SearchView, LoginView) {
 
   $.ajaxSetup({
@@ -49,8 +43,6 @@ define([
   });
 
   // Cross app collections
-  App.users    = new UserCollection;
-  App.posts    = new PostCollection;
   App.comments = new CommentCollection;
 
   // Web User

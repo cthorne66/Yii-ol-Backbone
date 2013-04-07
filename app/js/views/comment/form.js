@@ -5,8 +5,8 @@ define([
   'modelbinding',
   'collections/post',
   'views/alert',
-  'text!templates/comment/form.html',
-  'bootstrapTypeahead',
+  'text!templates/comment/form.html'
+//  'bootstrapTypeahead'
   ], function($, _, Backbone, ModelBinding, PostCollection, AlertView, formTemplate) {
 
   var CommentFormView = Backbone.View.extend({
@@ -15,7 +15,7 @@ define([
 
     events: {
       'click button[name=save]'   : 'save',
-      'click button[name=cancel]' : 'cancel',
+      'click button[name=cancel]' : 'cancel'
       // 'click .inline-icon'        : 'editPublisher',
       // 'click .publisher_name'     : 'openPublisher',
     },

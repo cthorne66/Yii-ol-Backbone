@@ -1,37 +1,48 @@
 // Use ECMAScript 5 Strict Mode
 "use strict";
 
+//over-ride the default requireJS error handler with something a bit more useful
+// require.onError = function (err) {
+//     console.error('Unable to loads module(s): ', err.requireModules);
+//     require.undef(err.requireModules); //this might be an array?
+//     console.log('Here are some more details: ', err);
+// };
+
 var require = {
     paths: {
-        jquery               : 'libs/jquery/jquery-1.7.1.min',
-        jqueryUICore         : 'libs/jquery-ui/jquery.ui.core',
-        jqueryUIWidget       : 'libs/jquery-ui/jquery.ui.widget',
-        jqueryUIMouse        : 'libs/jquery-ui/jquery.ui.mouse',
-        jqueryUIPosition     : 'libs/jquery-ui/jquery.ui.position',
-        jqueryUIAutocomplete : 'libs/jquery-ui/jquery.ui.autocomplete',
-        jqueryUIDatepicker   : 'libs/jquery-ui/jquery.ui.datepicker',
-        underscore           : 'libs/underscore/underscore',
-        underscoreString     : 'libs/underscore/underscore.string',
-        backbone             : 'libs/backbone/backbone',
-        backboneRelational   : 'libs/backbone/backbone-relational',
-        modelbinding         : 'libs/backbone/backbone.modelbinding',
-        visualsearch         : 'libs/app/visualsearch',
-        marionette           : 'libs/backbone/backbone.marionette',
-        text                 : 'libs/require/text',
-        domReady             : 'libs/require/domReady',
-        json                 : 'libs/utils/json2',
-        bootstrapAlert       : 'libs/bootstrap/bootstrap-alert',
-        bootstrapButton      : 'libs/bootstrap/bootstrap-button',
-        bootstrapDropdown    : 'libs/bootstrap/bootstrap-dropdown',
-        bootstrapModal       : 'libs/bootstrap/bootstrap-modal',
-        bootstrapTab         : 'libs/bootstrap/bootstrap-tab',
-        bootstrapTypeahead   : 'libs/bootstrap/bootstrap-typeahead',
+        templates            : '../templates',
+        lib                  : '../lib',
+        jquery               : '../lib/jquery/jquery-1.7.1.min',
+        jqueryUICore         : '../lib/jquery-ui/jquery.ui.core',
+        jqueryUIWidget       : '../lib/jquery-ui/jquery.ui.widget',
+        jqueryUIMouse        : '../lib/jquery-ui/jquery.ui.mouse',
+        jqueryUIPosition     : '../lib/jquery-ui/jquery.ui.position',
+        jqueryUIAutocomplete : '../lib/jquery-ui/jquery.ui.autocomplete',
+        jqueryUIDatepicker   : '../lib/jquery-ui/jquery.ui.datepicker',
+        underscore           : '../lib/underscore/underscore-1.4.4-min',
+        underscoreString     : '../lib/underscore/underscore.string',
+        backbone             : '../lib/backbone/backbone',
+        backboneRelational   : '../lib/backbone/backbone-relational',
+        modelbinding         : '../lib/backbone/backbone.modelbinding',
+        backboneModelBinding : '../lib/backbone/backbone.modelbinder.min',
+        visualsearch         : '../lib/app/visualsearch',
+        marionette           : '../lib/backbone/backbone.marionette',
+        text                 : '../lib/require/text',
+        domReady             : '../lib/require/domReady',
+        json                 : '../lib/utils/json2',
+        bootstrap            : '../lib/bootstrap/bootstrap.min',
+        bootstrapAlert       : '../lib/bootstrap/bootstrap-alert',
+        bootstrapButton      : '../lib/bootstrap/bootstrap-button',
+        bootstrapDropdown    : '../lib/bootstrap/bootstrap-dropdown',
+        bootstrapModal       : '../lib/bootstrap/bootstrap-modal',
+        bootstrapTab         : '../lib/bootstrap/bootstrap-tab',
+        bootstrapTypeahead   : '../lib/bootstrap/bootstrap-typeahead',
 
-        jasmine              : 'libs/jasmine/jasmine',
-        'jasmine.html'       : 'libs/jasmine/jasmine-html',
-        'jasmine.jquery'     : 'libs/jasmine/jasmine-jquery',
-        // bootstrapWysihtml5   : 'libs/bootstrap/bootstrap-wysihtml5',
-        datejs: 'libs/utils/date'
+        jasmine              : '../lib/jasmine/jasmine',
+        'jasmine.html'       : '../lib/jasmine/jasmine-html',
+        'jasmine.jquery'     : '../lib/jasmine/jasmine-jquery',
+        // bootstrapWysihtml5   : '../lib/bootstrap/bootstrap-wysihtml5',
+        datejs: '../lib/utils/date'
     },
     shim: {
         underscore: {
@@ -40,6 +51,9 @@ var require = {
         backbone: {
             deps: ["underscore", "jquery"],
             exports: "Backbone"
+        },
+        bootstrap: {
+          deps: ["jquery"]
         },
         visualsearch: {
             deps: ['backbone', 'jqueryUIAutocomplete']
@@ -50,5 +64,24 @@ var require = {
         jasmine: {exports: 'jasmine'},
         'jasmine.html':['jasmine'],
         'jasmine.jquery': ['jasmine']
+    },
+    onError: function (err) {
+        console.error('Unable to loads module(s): ', err.requireModules);
+        require.undef(err.requireModules); //this might be an array?
+        console.log('Here are some more details: ', err);
     }
+};
+
+// Setup namespacing
+if(typeof mv == 'undefined'){
+window.mv = {  //instanciate namespace for application
+  views:{},
+  models:{},  
+  collections:{},
+  helpers:{},
+  i:{ //for instaciated objects
+    views:{},
+    router: null
+  }
+};
 }

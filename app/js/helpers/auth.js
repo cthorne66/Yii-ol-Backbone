@@ -1,10 +1,8 @@
 define([
-  'jquery', 
-  'underscore', 
-  'backbone',
-  ], function($, _, Backbone) {
+  'core'
+  ], function(core) {
 
-  var Auth = function() {
+  mv.helpers.Auth = function() {
     this.initialize.apply(this, arguments);
   };
 
@@ -26,15 +24,15 @@ define([
         var data = $.cookie("_yiibackbone").split(',');
         var params = {
           username: data[0],
-          token: data[1],
+          token: data[1]
         }
         return params;
       } else {
         return false; 
       }
-    },
+    }
 
   });
 
-  return Auth;
+  return mv.helpers.Auth;
 });

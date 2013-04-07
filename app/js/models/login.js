@@ -1,17 +1,15 @@
 define([
-  'jquery', 
-  'underscore', 
-  'backbone',
-  ], function($, _, Backbone) {
+  'core'
+  ], function() {
 
-  var LoginModel = Backbone.Model.extend({
+  mv.models.Login = Backbone.Model.extend({
     
     defaults:{
       authenticated: false
-    },
+    }
 
   });
 
-  return LoginModel;
+  return mv.models.Login;
 });
 

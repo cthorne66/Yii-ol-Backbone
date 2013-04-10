@@ -2,15 +2,15 @@ YiiBackbone
 ===========
 
 - Status: Work in progress.
-- Integration environment: http://yiibackbone.int.clevertech.biz/
 - Login: super/1q2w3e
 
 Introduction
 ============
 
-YiiBackbone is a sample blog web application build using Backbone.js and Yii.
-The source of this project can be used to kick-start other Backbone.js projects
-or serve as reference point on using Backbone.js.
+Yii-ol-Backone was forked from the YiiBackbone project.  The purpose of Yii-ol-Backbone was 
+to leverage the incredible work done in YiiBackbone, while lightening up the client-side tech stack.
+
+Hopefully this project will give you a jump start on what you need for your site/project
 
 Requirements
 ============
@@ -30,7 +30,7 @@ Installation
 
 You can get the source files from:
 
-    $ git clone git@github.com:clevertech/YiiBackbone.git
+    $ git clone git@github.com/cthorne66/Yii-ol-Backbone.git
 
 And load git submodules:
 
@@ -107,10 +107,9 @@ Name :                    Path :                                           Docs 
 - Underscore.JS        : 'app/js/libs/underscore/underscore',            : http://documentcloud.github.com/underscore/
 - RequireJS            : 'app/js/libs/require/*'                         : http://requirejs.org/
 - jQuery               : 'app/js/libs/jquery/jquery-1.7.1.min',          : http://jquery.com/
-- jQuery UI            : 'app/js/libs/jquery-ui/jquery.ui.core',         : http://jqueryui.com/
+TDB - jQuery UI            : 'app/js/libs/jquery-ui/jquery.ui.core',         : http://jqueryui.com/
 - MarionetteJS         : 'app/js/libs/backbone/backbone.marionette',     : http://marionettejs.com/
-- Backbone-relational  : 'app/js/libs/backbone/backbone-relational',     : https://github.com/PaulUithol/Backbone-relational
-- modelbinding         : 'app/js/libs/backbone/backbone.modelbinding',   : https://github.com/derickbailey/backbone.modelbinding
+TBD - modelbinding         : 'app/js/libs/backbone/backbone.modelbinding',   : https://github.com/derickbailey/backbone.modelbinding
 - visualsearch         : 'app/js/libs/app/visualsearch',                 : http://documentcloud.github.com/visualsearch/
 - json                 : 'app/js/libs/utils/json2',                      : https://github.com/douglascrockford/JSON-js
 - bootstrap            : 'app/js/libs/bootstrap/*',                      : http://twitter.github.com/bootstrap/javascript.html
@@ -133,14 +132,6 @@ For BDD on YiiBackbone we are using:
 You need to install /app/package.json using NPM to enable Cucumber.js. Follow
 the instructions on Cucumber.js's docs site above.
 
-Code Style Guide
-================
-
-Indent
-------
-
-For JavaScript, CSS, HTML files we use only spaces, and indent 2 spaces at a time.
-And for PHP files we follow Yii style with 1 tab indentation.
 
 Backbone Resources
 ==================
@@ -168,7 +159,7 @@ Known Bugs
 Architecture
 ============
 
-YiiBackbone's architecture is divided into two obvious parts. The server and
+Yii-ol-Backbone's architecture is divided into two obvious parts. The server and
 the client.
 
 The server-side is handled by Yii. Yii is used to provide the DB manipulations
@@ -193,19 +184,20 @@ The application consists of the following parts ("/app/js")
 
 Authors
 =======
-- Ivan Shaovchev, @ivanshaovchev
-- Rinat Silnov, @mashingan
+- Chris Thorne, @cthorne66
+- You?
 
 Thanks
 ======
-[CleverTech](http://www.clevertech.biz) for supporting this OpenSource project.
+The authors of YiiBackbone, who did all the hard work so this project could exist.  Take
+a look at it to determine if it better suits your needs.
+
 
 License
 =======
 
 The MIT License
 
-Copyright (c) 2012 CleverTech
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

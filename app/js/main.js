@@ -12,7 +12,6 @@ define([
   'views/navbarView',
   'views/searchView',
   'views/loginView',
-  'backboneRelational',
   'datejs'
 ], function(core, domReady,
             Router, App,

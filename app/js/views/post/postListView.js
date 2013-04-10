@@ -12,8 +12,7 @@ define([
     initialize: function(options) {},
 
     setup: function(){
-      var self = this,
-        dfd = $.Deferred();
+      var dfd = $.Deferred();
       this.collection = new Posts();
       this.collection.on('error', this.error, this);
 

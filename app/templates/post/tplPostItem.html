@@ -1,6 +1,6 @@
 <div class="row">
     <div class="pull-right icons">
-        <a href="#post/edit/{{= model.id }}" class="edit login-required">
+        <a href="#post/edit/{{= id }}" class="edit login-required">
             <i class="icon-edit"></i>
         </a>
         <a href="javascript:void(0)" data-toggle="modal" data-target="#modal" class="delete login-required">
@@ -8,15 +8,15 @@
         </a>
     </div>
     <h1>
-        <a class="read" href="#post/read/{{= model.id }}">
-            {{= model.title }}
+        <a class="read" href="#post/read/{{= id }}">
+            {{= title }}
         </a>
     </h1>
   <span class="post-meta">
-        {{= model.create_date ? Date.parse(model.create_date).toString('d MMM, yyyy') : '' }} /
+        {{= create_date ? Date.parse(create_date).toString('d MMM, yyyy') : '' }} /
         {{= comments.length }} comments /
         by {{= author ? author.username : '' }}
     </span>
     <hr>
-    <div class="content">{{= (model.content + '').replace(/\n/g,'<br>') }}</div>
+    <div class="content">{{= (content + '').replace(/\n/g,'<br>') }}</div>
 </div>

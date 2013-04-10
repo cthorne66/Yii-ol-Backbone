@@ -5,16 +5,17 @@ define([
   'backboneRelational'
   ], function(core, CommentModel, CommentCollection) {
 
-  mv.models.Post = Backbone.RelationalModel.extend({
+  mv.models.Post = Backbone.Model.extend({
 
-    urlRoot: 'api/post',
+    urlRoot: 'api/postwithcomments',
 
     defaults: {
       title: '',
       content: '',
       create_date: '',
       is_deleted: null,
-      user_id: ''
+      user_id: '',
+      comments: []
     },
 
     relations: [

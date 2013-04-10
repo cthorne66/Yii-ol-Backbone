@@ -17,12 +17,6 @@ define([
 
     initialize: function(options) {
       _.bindAll(this, 'render','confirmDelete', 'close');
-
-      // this.model.on('error', this.error);
-      // this.model.on('modal:confirm', this.confirmDelete);
-
-      // $.when(this.model.fetchRelated('comments'))
-      //  .done(this.render);
     },
 
     setup: function(id){
@@ -33,7 +27,7 @@ define([
       $.when(post.fetch())
       .done(function(){
         self.model = post;
-        self.model.fetchRelated('comments');
+        //self.model.fetchRelated('comments');
         self.model.on('error', self.error);
         self.model.on('modal:confirm', self.confirmDelete);
         dfd.resolve();
@@ -46,13 +40,9 @@ define([
 
     render: function(template) {
       var self = this;
-      $.when.apply(null, this.model.fetchRelated('comments')).done(function() {
-        self.$el.html(self.template({
-          model    : self.model.toJSON(),
-          author   : self.model.get('author') ? self.model.get('author').toJSON() : '',
-          comments : self.model.get('comments')
-        }));
-      });
+      var data = this.model.toJSON();
+      data.author = self.model.get('author') ? self.model.get('author').toJSON() : '';
+      self.$el.html(self.template(data));
       return this;
     },
 

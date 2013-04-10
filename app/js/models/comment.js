@@ -1,9 +1,8 @@
 define([
-  'core',
-  'backboneRelational'
+  'core'
   ], function() {
 
-  mv.models.Comment = Backbone.RelationalModel.extend({
+  mv.models.Comment = Backbone.Model.extend({
     
     urlRoot: 'api/comment'
 

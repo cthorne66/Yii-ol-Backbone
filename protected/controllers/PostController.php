@@ -19,11 +19,43 @@ class PostController extends Controller
 		$this->sendResponse(200, CJSON::encode($model));
 	}
 
+  public function actionReadWithComments($id)
+  {
+    if (null === ($model = Post::model()->with('comments')->findByPk($id)))
+      throw new CHttpException(404);
+    $post = $model->getAttributes();
+    $commentArray = $model->getRelated('comments');
+    $comments = array();
+    foreach($commentArray as $comment){
+      $comments[] = $comment->getAttributes();
+    }
+    $post['comments'] = $comments;
+    $this->sendResponse(200, CJSON::encode($post));
+  }
+
 	public function actionList()
 	{
 		$models = Post::model()->findAll();
 		$this->sendResponse(200, CJSON::encode($models));
 	}
+
+  public function actionListWithComments()
+  {
+    $models = Post::model()->with('comments')->findAll();
+    $posts = Array();
+    foreach($models as $model){
+      $post = $model->getAttributes();
+      $comments = array();
+      foreach($model->getRelated('comments') as $comment){
+        $comments[] = $comment->getAttributes();
+      }
+      $post['comments'] = $comments;
+      $post['comments'];
+      $posts[] = $post;
+      //$posts[] = array('jsonDataSource'=>array('attributes'=>$attributes,'relations'=>$this->relations));
+    }
+    $this->sendResponse(200, CJSON::encode($posts));
+  }
 
 	public function actionCreate()
 	{

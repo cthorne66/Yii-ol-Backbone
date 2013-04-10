@@ -13,7 +13,7 @@ Yii::setPathOfAlias('root', $root);
 // CWebApplication properties can be configured here.
 return CMap::mergeArray (array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'YiiBackbone',
+	'name'=>'Yii-ol-Backbone',
 	'params'=>$params,
 
 	// preloading 'log' component
@@ -57,6 +57,9 @@ return CMap::mergeArray (array(
 				array('post/read'       , 'pattern'=>'api/post/<id:\d+>'    , 'verb'=>'GET'),
 				array('post/update'     , 'pattern'=>'api/post/<id:\d+>'    , 'verb'=>'PUT'),
 				array('post/delete'     , 'pattern'=>'api/post/<id:\d+>'    , 'verb'=>'DELETE'),
+
+        array('post/listwithcomments'       , 'pattern'=>'api/postwithcomments'             , 'verb'=>'GET'),
+        array('post/readwithcomments'       , 'pattern'=>'api/postwithcomments/<id:\d+>'    , 'verb'=>'GET'),
 
 				array('comment/list'    , 'pattern'=>'api/comment'          , 'verb'=>'GET'),
 				array('comment/create'  , 'pattern'=>'api/comment'          , 'verb'=>'POST'),

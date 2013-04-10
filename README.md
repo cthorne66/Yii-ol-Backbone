@@ -107,9 +107,9 @@ Name :                    Path :                                           Docs 
 - Underscore.JS        : 'app/js/libs/underscore/underscore',            : http://documentcloud.github.com/underscore/
 - RequireJS            : 'app/js/libs/require/*'                         : http://requirejs.org/
 - jQuery               : 'app/js/libs/jquery/jquery-1.7.1.min',          : http://jquery.com/
-TDB - jQuery UI            : 'app/js/libs/jquery-ui/jquery.ui.core',         : http://jqueryui.com/
+- jQuery UI (TDB)      : 'app/js/libs/jquery-ui/jquery.ui.core',         : http://jqueryui.com/
 - MarionetteJS         : 'app/js/libs/backbone/backbone.marionette',     : http://marionettejs.com/
-TBD - modelbinding         : 'app/js/libs/backbone/backbone.modelbinding',   : https://github.com/derickbailey/backbone.modelbinding
+- modelbinding (TDB)   : 'app/js/libs/backbone/backbone.modelbinding',   : https://github.com/derickbailey/backbone.modelbinding
 - visualsearch         : 'app/js/libs/app/visualsearch',                 : http://documentcloud.github.com/visualsearch/
 - json                 : 'app/js/libs/utils/json2',                      : https://github.com/douglascrockford/JSON-js
 - bootstrap            : 'app/js/libs/bootstrap/*',                      : http://twitter.github.com/bootstrap/javascript.html

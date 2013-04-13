@@ -24,9 +24,8 @@ class PostController extends Controller
     if (null === ($model = Post::model()->with('comments')->findByPk($id)))
       throw new CHttpException(404);
     $post = $model->getAttributes();
-    $commentArray = $model->getRelated('comments');
     $comments = array();
-    foreach($commentArray as $comment){
+    foreach($model->getRelated('comments') as $comment){
       $comments[] = $comment->getAttributes();
     }
     $post['comments'] = $comments;
@@ -50,9 +49,7 @@ class PostController extends Controller
         $comments[] = $comment->getAttributes();
       }
       $post['comments'] = $comments;
-      $post['comments'];
       $posts[] = $post;
-      //$posts[] = array('jsonDataSource'=>array('attributes'=>$attributes,'relations'=>$this->relations));
     }
     $this->sendResponse(200, CJSON::encode($posts));
   }

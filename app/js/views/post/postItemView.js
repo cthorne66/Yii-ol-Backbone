@@ -3,8 +3,7 @@ define([
   'app',
   'models/post',
   'views/modal/confirm',
-  'text!templates/post/tplPostItem.html',
-  'jqueryUIDatepicker'
+  'text!templates/post/tplPostItem.html'
   ], function(core, App, Post, ModalConfirmView, template) {
 
   mv.views.PostItemView = Backbone.View.extend({
